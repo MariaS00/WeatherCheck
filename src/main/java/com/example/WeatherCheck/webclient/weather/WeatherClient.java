@@ -34,19 +34,22 @@ public class WeatherClient {
                 lat,
                 lon,
                 API_KEY);
-        Forecast forecast = Forecast.builder()
-                .sunrise(openForecastDto.getDaily().get(0).getSunrise())
-                .sunset(openForecastDto.getDaily().get(0).getSunset())
-                .dayTemperature(openForecastDto.getDaily().get(0).getTemp().getDay())
-                .nightTemperature(openForecastDto.getDaily().get(0).getTemp().getNight())
-                .dayTempFeelsLike(openForecastDto.getDaily().get(0).getFeels_like().getDay())
-                .nightTempFeelsLike(openForecastDto.getDaily().get(0).getFeels_like().getNight())
-                .pressure(openForecastDto.getDaily().get(0).getPressure())
-                .humidity(openForecastDto.getDaily().get(0).getHumidity())
-                .windSpeed(openForecastDto.getDaily().get(0).getWind_speed())
-                .build();
-
-        return new ArrayList<>();
+        List<Forecast> forecastList = new ArrayList<>();
+        for (int days = 0; days<=7; days++) {
+            Forecast forecast = Forecast.builder()
+                    .sunrise(openForecastDto.getDaily().get(days).getSunrise())
+                    .sunset(openForecastDto.getDaily().get(days).getSunset())
+                    .dayTemperature(openForecastDto.getDaily().get(days).getTemp().getDay())
+                    .nightTemperature(openForecastDto.getDaily().get(days).getTemp().getNight())
+                    .dayTempFeelsLike(openForecastDto.getDaily().get(days).getFeels_like().getDay())
+                    .nightTempFeelsLike(openForecastDto.getDaily().get(days).getFeels_like().getNight())
+                    .pressure(openForecastDto.getDaily().get(days).getPressure())
+                    .humidity(openForecastDto.getDaily().get(days).getHumidity())
+                    .windSpeed(openForecastDto.getDaily().get(days).getWind_speed())
+                    .build();
+            forecastList.add(forecast);
+        }
+        return forecastList;
     }
 
     private <T> T callGetMethod(String url, Class<T> responseType, Object... objects) {
