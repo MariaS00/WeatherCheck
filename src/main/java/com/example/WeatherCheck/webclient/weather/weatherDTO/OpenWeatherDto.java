@@ -1,4 +1,4 @@
-package com.example.WeatherCheck.webclient.weather.dto;
+package com.example.WeatherCheck.webclient.weather.weatherDTO;
 
 import lombok.Getter;
 
