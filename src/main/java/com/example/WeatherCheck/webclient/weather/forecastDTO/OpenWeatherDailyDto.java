@@ -6,8 +6,8 @@ import lombok.Getter;
 @Getter
 public class OpenWeatherDailyDto {
 
-    private long sunrise;
-    private long sunset;
+    private String sunrise;
+    private String sunset;
     private OpenTempDto temp;
     private OpenFeelsLikeDto feels_like;
     private long pressure;

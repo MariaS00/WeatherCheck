@@ -16,15 +16,13 @@ public class WeatherService {
 
     private final WeatherClient weatherClient;
 
-    public Weather getWeather(String city){
+    public Weather getWeather(String city) {
         return weatherClient.getWeatherForOneCity(city);
     }
 
-    public List<Forecast> getForecast(double lat, double lon){
+    public List<Forecast> getForecast(double lat, double lon) {
         return weatherClient.getForecast(lat, lon);
     }
-
-
 
 
 }

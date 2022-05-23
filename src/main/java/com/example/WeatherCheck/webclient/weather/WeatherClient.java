@@ -2,6 +2,7 @@ package com.example.WeatherCheck.webclient.weather;
 
 import com.example.WeatherCheck.model.Forecast;
 import com.example.WeatherCheck.model.Weather;
+import com.example.WeatherCheck.service.TimeConverter;
 import com.example.WeatherCheck.webclient.weather.forecastDTO.OpenWeatherWeatherDto;
 import com.example.WeatherCheck.webclient.weather.weatherDTO.OpenWeatherDto;
 import org.springframework.stereotype.Component;
@@ -15,7 +16,7 @@ public class WeatherClient {
 
     private static final String WEATHER_URL = "https://api.openweathermap.org/data/2.5/";
     private static final String API_KEY = "";
-    private RestTemplate restTemplate = new RestTemplate();
+    private final RestTemplate restTemplate = new RestTemplate();
 
 
     public Weather getWeatherForOneCity(String city) {
@@ -35,10 +36,10 @@ public class WeatherClient {
                 lon,
                 API_KEY);
         List<Forecast> forecastList = new ArrayList<>();
-        for (int days = 0; days<=7; days++) {
+        for (int days = 0; days <= 7; days++) {
             Forecast forecast = Forecast.builder()
-                    .sunrise(openForecastDto.getDaily().get(days).getSunrise())
-                    .sunset(openForecastDto.getDaily().get(days).getSunset())
+                    .sunrise(TimeConverter.convertTime(openForecastDto.getDaily().get(days).getSunrise()))
+                    .sunset(TimeConverter.convertTime(openForecastDto.getDaily().get(days).getSunset()))
                     .dayTemperature(openForecastDto.getDaily().get(days).getTemp().getDay())
                     .nightTemperature(openForecastDto.getDaily().get(days).getTemp().getNight())
                     .dayTempFeelsLike(openForecastDto.getDaily().get(days).getFeels_like().getDay())

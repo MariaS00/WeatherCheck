@@ -21,7 +21,7 @@ public class WeatherController {
     }
 
     @GetMapping("/forecast")
-    public List<Forecast> getForecast(){
+    public List<Forecast> getForecast() {
         return weatherService.getForecast(50.05,19.94);
     }
 
