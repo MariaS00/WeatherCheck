@@ -24,5 +24,4 @@ public class WeatherService {
         return weatherClient.getForecast(lat, lon);
     }
 
-
 }

@@ -3,12 +3,6 @@ package com.example.WeatherCheck.model;
 import lombok.Builder;
 import lombok.Getter;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.TimeZone;
 
 @Getter
 @Builder
